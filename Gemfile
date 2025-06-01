@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.11.3'
+gem 'jquery-rails'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.15'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -11,6 +12,7 @@ gem 'jbuilder', '~> 2.0'
 gem "pry-rails", "0.3.4"
 gem "pry-byebug", "3.9.0"
 gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'sprockets', '~> 3.7.2'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
