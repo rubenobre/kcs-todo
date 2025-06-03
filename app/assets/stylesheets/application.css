@@ -16,21 +16,26 @@
 
  .delete-link {
     color: rgb(0, 0, 0);
-    background-color: rgb(255, 170, 0);
+    background-color: #fea889;
     padding: 6px 12px;
     border-radius: 4px;
     text-decoration: none;
+    transition: background-color 0.3s ease;
   }
 .edit-button {
-  background-color: #737373;
+  background-color: #a38abd;
   color: rgb(0, 0, 0);
-  padding: 8px 16px;
+  padding: 6px 16px;
   text-decoration: none;
-  border-radius: 5px;
-  font-weight: bold;
+  border-radius: 4px;
   transition: background-color 0.3s ease;
 }
 
 .edit-button:hover {
-  background-color: #ffffff;
+  background-color: #69587B;
 }
+
+.delete-link:hover {
+    background-color:#c87a5b;
+}
+
