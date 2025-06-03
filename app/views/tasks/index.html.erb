@@ -10,7 +10,7 @@
         <th style="border: 1px solid white; padding: 8px;">Description</th>
         <th style="border: 1px solid white; padding: 8px;">Status</th>
         <th style="border: 1px solid white; padding: 8px;">Due Date</th>
-        <th style="border: 1px solid white; padding: 8px;">Actions</th>
+        <th style="border: 1px solid white; padding: 8px;">Actions</th> 
       </tr>
     </thead>
     <tbody>
@@ -22,8 +22,12 @@
             <%= task.complete ? 'Completed' : 'Pending' %>
           </td>
           <td style="border: 1px solid white; padding: 8px;"><%= task.due_date.present? ? task.due_date : '-' %></td>
-          <td style="border: 1px solid white; padding: 8px; white-space: nowrap;">
-            <%= link_to 'Edit', edit_task_path(task), class: 'edit-button' %> 
+          <td style="border: 1px solid white; padding: 8px;">
+            <label style="cursor: pointer;">
+              Mark complete
+              <%= check_box_tag "task_#{task.id}", task.id, task.complete, class: "task-complete-toggle", data: { task_id: task.id }, style: "margin-left: 5px;" %>
+            </label>
+            <%= link_to 'Edit', edit_task_path(task), class: 'edit-button' %> |
             <%= link_to 'Delete', task_path(task), method: :delete, data: { confirm: 'Are you sure?' }, class: 'delete-link' %>
           </td>
         </tr>
@@ -32,4 +36,24 @@
   </table>
 <% else %>
   <p>No tasks yet for now.</p>
-<% end %>
+<% end %>  
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".task-complete-toggle").forEach(function (checkbox) {
+      checkbox.addEventListener("change", function () {
+        const taskId = this.dataset.taskId;
+        const complete = this.checked;
+
+        fetch(`/tasks/${taskId}/toggle_complete`, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            "X-CSRF-Token": document.querySelector("meta[name='csrf-token']").content
+          },
+          body: JSON.stringify({ complete: complete })
+        });
+      });
+    });
+  });
+</script>

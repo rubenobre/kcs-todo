@@ -34,6 +34,14 @@ class TasksController < ApplicationController
     redirect_to tasks_path, notice: 'Task was successfully deleted.'
   end
 
+  def toggle_complete
+    @task = Task.find(params[:id])
+    if @task.update(complete: params[:complete])
+      head :ok
+    else
+      head :unprocessable_entity
+    end
+  end
   private
 
   def set_task
