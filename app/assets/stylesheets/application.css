@@ -16,20 +16,29 @@
 
  .delete-link {
     color: rgb(0, 0, 0);
-    background-color: #fea889;
+    background-color: #8c8c8c;
     padding: 6px 12px;
-    border-radius: 4px;
+    border-radius: 2px;
     text-decoration: none;
     transition: background-color 0.3s ease;
   }
 .edit-button {
-  background-color: #a38abd;
+  background-color: #8c8c8c;
   color: rgb(0, 0, 0);
   padding: 6px 16px;
   text-decoration: none;
-  border-radius: 4px;
+  border-radius: 2px;
   transition: background-color 0.3s ease;
-}
+ }
+
+.newtask-button {   
+  background-color: #8c8c8c;
+  color: rgb(0, 0, 0);
+  padding: 2px 16px;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: background-color 0.3s ease;
+ }
 
 .edit-button:hover {
   background-color: #69587B;
