@@ -22,8 +22,8 @@
             <%= task.complete ? 'Completed' : 'Pending' %>
           </td>
           <td style="border: 1px solid white; padding: 8px;"><%= task.due_date.present? ? task.due_date : '-' %></td>
-          <td style="border: 1px solid white; padding: 8px;">
-            <%= link_to 'Edit', edit_task_path(task), class: 'edit-button' %> |
+          <td style="border: 1px solid white; padding: 8px; white-space: nowrap;">
+            <%= link_to 'Edit', edit_task_path(task), class: 'edit-button' %> 
             <%= link_to 'Delete', task_path(task), method: :delete, data: { confirm: 'Are you sure?' }, class: 'delete-link' %>
           </td>
         </tr>
@@ -32,4 +32,4 @@
   </table>
 <% else %>
   <p>No tasks yet for now.</p>
-<% end %>    
+<% end %>
