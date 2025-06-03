@@ -2,7 +2,11 @@
 
 <%= link_to 'New Task', new_task_path, class: 'newtask-button' %>
 
-<% if @tasks.any? %>
+<% incomplete_tasks = @tasks.reject(&:complete) %>
+<% completed_tasks = @tasks.select(&:complete) %>
+
+<% if incomplete_tasks.any? %>
+  <h2>Incomplete Tasks</h2>
   <table style="border-collapse: collapse; width: 100%;">
     <thead>
       <tr style="background-color: #f0f0f0; border: 1px solid white;">
@@ -14,13 +18,11 @@
       </tr>
     </thead>
     <tbody>
-      <% @tasks.each do |task| %>
-        <tr style="border: 1px solid white; background-color: <%= task.complete ? '#c8e6c9' : '#f0f0f0' %>;">
+      <% incomplete_tasks.each do |task| %>
+        <tr style="border: 1px solid white; background-color: #f0f0f0;">
           <td style="border: 1px solid white; padding: 8px;"><%= task.title %></td>
           <td style="border: 1px solid white; padding: 8px;"><%= task.description.presence || '-' %></td>
-          <td style="border: 1px solid white; padding: 8px;">
-            <%= task.complete ? 'Completed' : 'Pending' %>
-          </td>
+          <td style="border: 1px solid white; padding: 8px;">Pending</td>
           <td style="border: 1px solid white; padding: 8px;"><%= task.due_date.present? ? task.due_date : '-' %></td>
           <td style="border: 1px solid white; padding: 8px;">
             <label style="cursor: pointer;">
@@ -35,8 +37,43 @@
     </tbody>
   </table>
 <% else %>
-  <p>No tasks yet for now.</p>
-<% end %>  
+  <p>No incomplete tasks at the moment.</p>
+<% end %>
+
+<% if completed_tasks.any? %>
+  <h2>Completed Tasks</h2>
+  <table style="border-collapse: collapse; width: 100%;">
+    <thead>
+      <tr style="background-color: #f0f0f0; border: 1px solid white;">
+        <th style="border: 1px solid white; padding: 8px;">Title</th>
+        <th style="border: 1px solid white; padding: 8px;">Description</th>
+        <th style="border: 1px solid white; padding: 8px;">Status</th>
+        <th style="border: 1px solid white; padding: 8px;">Due Date</th>
+        <th style="border: 1px solid white; padding: 8px;">Actions</th> 
+      </tr>
+    </thead>
+    <tbody>
+      <% completed_tasks.each do |task| %>
+        <tr style="border: 1px solid white; background-color: #c8e6c9;">
+          <td style="border: 1px solid white; padding: 8px;"><%= task.title %></td>
+          <td style="border: 1px solid white; padding: 8px;"><%= task.description.presence || '-' %></td>
+          <td style="border: 1px solid white; padding: 8px;">Completed</td>
+          <td style="border: 1px solid white; padding: 8px;"><%= task.due_date.present? ? task.due_date : '-' %></td>
+          <td style="border: 1px solid white; padding: 8px;">
+            <label style="cursor: pointer;">
+              Mark complete
+              <%= check_box_tag "task_#{task.id}", task.id, task.complete, class: "task-complete-toggle", data: { task_id: task.id }, style: "margin-left: 5px;" %>
+            </label>
+            <%= link_to 'Edit', edit_task_path(task), class: 'edit-button' %> |
+            <%= link_to 'Delete', task_path(task), method: :delete, data: { confirm: 'Are you sure?' }, class: 'delete-link' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>No completed tasks yet.</p>
+<% end %>
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
