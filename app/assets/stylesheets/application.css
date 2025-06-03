@@ -13,7 +13,6 @@
  *= require_tree .
  *= require_self
  */
-<<<<<<< Updated upstream
 
  .delete-link {
     color: white;
@@ -22,7 +21,6 @@
     border-radius: 4px;
     text-decoration: none;
   }
-=======
 .edit-button {
   background-color: #4CAF50;
   color: white;
@@ -36,4 +34,3 @@
 .edit-button:hover {
   background-color: #45a049;
 }
->>>>>>> Stashed changes
