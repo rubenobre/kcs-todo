@@ -3,18 +3,33 @@
 <%= link_to 'New Task', new_task_path %>
 
 <% if @tasks.any? %>
-  <ul>
-    <% @tasks.each do |task| %>
-      <li>
-        <%= task.title %>
-        <%= "(#{task.description})" if task.description.present? %>
-        <%= task.complete ? '(Completed)' : '(Pending)' %>
-        <%= "(Due: #{task.due_date})" if task.due_date.present? %>
-        <%= link_to 'Delete', task_path(task), method: :delete, data: { confirm: 'Are you sure?' }, class: 'delete-link' %>
-        <%= link_to 'Edit', edit_task_path(task), class: 'edit-button' %>
-      </li>
-    <% end %>
-  </ul>
+  <table style="border-collapse: collapse; width: 100%;">
+    <thead>
+      <tr style="background-color: #f0f0f0; border: 1px solid white;">
+        <th style="border: 1px solid white; padding: 8px;">Title</th>
+        <th style="border: 1px solid white; padding: 8px;">Description</th>
+        <th style="border: 1px solid white; padding: 8px;">Status</th>
+        <th style="border: 1px solid white; padding: 8px;">Due Date</th>
+        <th style="border: 1px solid white; padding: 8px;">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @tasks.each do |task| %>
+        <tr style="border: 1px solid white; background-color: <%= task.complete ? '#c8e6c9' : '#f0f0f0' %>;">
+          <td style="border: 1px solid white; padding: 8px;"><%= task.title %></td>
+          <td style="border: 1px solid white; padding: 8px;"><%= task.description.presence || '-' %></td>
+          <td style="border: 1px solid white; padding: 8px;">
+            <%= task.complete ? 'Completed' : 'Pending' %>
+          </td>
+          <td style="border: 1px solid white; padding: 8px;"><%= task.due_date.present? ? task.due_date : '-' %></td>
+          <td style="border: 1px solid white; padding: 8px;">
+            <%= link_to 'Edit', edit_task_path(task), class: 'edit-button' %> |
+            <%= link_to 'Delete', task_path(task), method: :delete, data: { confirm: 'Are you sure?' }, class: 'delete-link' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 <% else %>
   <p>No tasks yet for now.</p>
-<% end %>
+<% end %>    
