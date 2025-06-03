@@ -1,35 +1,43 @@
-<h1>Edit Task</h1>
+<div style="max-width: 100%; overflow-x: hidden; padding: 16px; box-sizing: border-box;">
 
-<%= form_for @task do |f| %>
-  <% if @task.errors.any? %>
-    <div>
-      <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
-      <ul>
-        <% @task.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
+  <h1 style="font-size: 32px;">Edit Task</h1>
+
+  <%= form_for @task, html: { class: "task-form" } do |f| %>
+    <% if @task.errors.any? %>
+      <div style="border: 1px solid #e74c3c; padding: 16px; background-color: #fbeaea; color: #c0392b; margin-bottom: 24px; font-size: 18px;">
+        <h2 style="font-size: 20px;">
+          <%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:
+        </h2>
+        <ul>
+          <% @task.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div style="margin-bottom: 20px;">
+      <%= f.label :title, style: "display: block; font-weight: bold; font-size: 18px;" %>
+      <%= f.text_field :title, style: "width: 100%; padding: 10px; font-size: 16px; box-sizing: border-box;" %>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+      <%= f.label :description, style: "display: block; font-weight: bold; font-size: 18px;" %>
+      <%= f.text_area :description, rows: 5, style: "width: 100%; padding: 10px; font-size: 16px; box-sizing: border-box;" %>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+      <%= f.label :complete, style: "font-weight: bold; font-size: 18px;" %>
+      <%= f.check_box :complete %>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+      <%= f.submit "Update Task", style: "padding: 12px 24px; background-color: #3498db; color: white; font-size: 16px; border: none; border-radius: 4px; cursor: pointer;" %>
     </div>
   <% end %>
 
-  <div>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </div>
+  <%= link_to 'Back', tasks_path, style: "display: inline-block; margin-top: 10px; color: #3498db; font-size: 16px;" %>
 
-  <div>
-    <%= f.label :description %>
-    <%= f.text_area :description %>
-  </div>
+</div>
 
-  <div>
-    <%= f.label :complete %>
-    <%= f.check_box :complete %>
-  </div>
 
-  <div>
-    <%= f.submit "Update Task" %>
-  </div>
-<% end %>
-
-<%= link_to 'Back', tasks_path %>
