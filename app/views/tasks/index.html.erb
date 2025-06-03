@@ -2,8 +2,9 @@
 
 <%= link_to 'New Task', new_task_path, class: 'newtask-button' %>
 
-<% incomplete_tasks = @tasks.reject(&:complete) %>
-<% completed_tasks = @tasks.select(&:complete) %>
+<% sorted_tasks = @tasks.sort_by { |task| task.due_date || Date.new(3000,1,1) } %>
+<% incomplete_tasks = sorted_tasks.reject(&:complete) %>
+<% completed_tasks = sorted_tasks.select(&:complete) %>
 
 <% if incomplete_tasks.any? %>
   <h2>Incomplete Tasks</h2>
