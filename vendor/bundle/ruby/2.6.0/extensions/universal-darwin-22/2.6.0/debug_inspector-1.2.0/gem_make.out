@@ -1,0 +1,16 @@
+current directory: /Users/jamson.zhao/kcs-todo/vendor/bundle/ruby/2.6.0/gems/debug_inspector-1.2.0/ext/debug_inspector
+/System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/bin/ruby -I /System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/lib/ruby/2.6.0 -r ./siteconf20250602-52269-ld0yrv.rb extconf.rb
+creating Makefile
+
+current directory: /Users/jamson.zhao/kcs-todo/vendor/bundle/ruby/2.6.0/gems/debug_inspector-1.2.0/ext/debug_inspector
+make "DESTDIR=" clean
+
+current directory: /Users/jamson.zhao/kcs-todo/vendor/bundle/ruby/2.6.0/gems/debug_inspector-1.2.0/ext/debug_inspector
+make "DESTDIR="
+compiling debug_inspector.c
+linking shared-object debug_inspector.bundle
+ld: warning: directory not found for option '-L/AppleInternal/Library/BuildRoots/46298ee5-4a1c-11ef-a181-1aec23608739/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.7.Internal.sdk/usr/local/lib'
+
+current directory: /Users/jamson.zhao/kcs-todo/vendor/bundle/ruby/2.6.0/gems/debug_inspector-1.2.0/ext/debug_inspector
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 debug_inspector.bundle ./.gem.20250602-52269-uz1hur
