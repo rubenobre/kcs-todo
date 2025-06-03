@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+
+ .delete-link {
+    color: white;
+    background-color: red;
+    padding: 6px 12px;
+    border-radius: 4px;
+    text-decoration: none;
+  }

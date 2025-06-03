@@ -10,7 +10,7 @@
         <%= "(#{task.description})" if task.description.present? %>
         <%= task.complete ? '(Completed)' : '(Pending)' %>
         <%= link_to 'Edit', edit_task_path(task) %>
-        <%= link_to 'Delete', task_path(task), method: :delete, data: { confirm: 'Are you sure?' } %>
+        <%= link_to 'Delete', task_path(task), method: :delete, data: { confirm: 'Are you sure?' }, class: 'delete-link' %>
       </li>
     <% end %>
   </ul>
