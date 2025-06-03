@@ -15,15 +15,15 @@
  */
 
  .delete-link {
-    color: white;
-    background-color: red;
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 170, 0);
     padding: 6px 12px;
     border-radius: 4px;
     text-decoration: none;
   }
 .edit-button {
-  background-color: #4CAF50;
-  color: white;
+  background-color: #737373;
+  color: rgb(0, 0, 0);
   padding: 8px 16px;
   text-decoration: none;
   border-radius: 5px;
@@ -32,5 +32,5 @@
 }
 
 .edit-button:hover {
-  background-color: #45a049;
+  background-color: #ffffff;
 }
